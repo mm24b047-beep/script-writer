@@ -89,7 +89,7 @@ become durable rules and never alter the agent's code or prompts.
 ## Persistent learning
 
 Human feedback and run history live outside the repository under
-`OVE_AGENT_HOME` (default `~/.octupie-video-editor`).
+`OVE_AGENT_HOME` (default `~/.video-editor`).
 
 - `rules.jsonl`: an append-only log of versioned, timestamped, hashed events.
   A `feedback` command appends a rule; `deactivate` appends a tombstone. The
@@ -129,11 +129,11 @@ Files are written atomically (temp + rename).
 ## CLI
 
 ```
-octupie-video-editor agent providers
-octupie-video-editor agent run <brief.json> [--provider deterministic|claude-cli|codex-cli] [--max-iterations N] [--no-render]
-octupie-video-editor agent feedback --run ID --scope SCOPE --rule TEXT [--creator X] [--series X] [--project X]
-octupie-video-editor agent rules [--scope SCOPE]
-octupie-video-editor agent deactivate --rule ID
+video-editor agent providers
+video-editor agent run <brief.json> [--provider deterministic|claude-cli|codex-cli] [--max-iterations N] [--no-render]
+video-editor agent feedback --run ID --scope SCOPE --rule TEXT [--creator X] [--series X] [--project X]
+video-editor agent rules [--scope SCOPE]
+video-editor agent deactivate --rule ID
 ```
 
 Exit codes: `0` success, `1` an operation that ran but did not pass (render or
