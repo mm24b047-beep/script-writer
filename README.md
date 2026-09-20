@@ -1,4 +1,4 @@
-# Octupie Video Editor
+#  Video Editor
 
 A portable, deterministic AI-assisted video editing engine. Language models produce a validated edit plan; deterministic code performs probing, timing, captions, rendering, audio assembly, and QA. The edit-plan JSON is the stable contract between the planner and the renderer. The engine runs without access to any private workspace.
 
@@ -40,7 +40,7 @@ Open the printed URL, paste a token, and you get a genuine timeline editor: a me
 
 ## CLI
 
-The binary is `octupie-video-editor` (run `npm run build` first, or use `npm run cli -- <command>` in development).
+The binary is `video-editor` (run `npm run build` first, or use `npm run cli -- <command>` in development).
 
 | Command | What it does |
 |---|---|
@@ -58,7 +58,7 @@ Example:
 
 ```bash
 npm run build
-node dist/cli.js init --preset octupie-product-launch --out my-plan.json
+node dist/cli.js init --preset product-launch --out my-plan.json
 node dist/cli.js validate my-plan.json
 node dist/cli.js render my-plan.json
 ```
@@ -120,10 +120,10 @@ npm run agent -- hook-variants my-plan.json --objective "explain customer retent
 npm run agent -- hook-variants my-plan.json --objective "explain customer retention" --count 3 --provider claude --allow-network --out output/hooks/customer-retention-claude --json
 
 # Optional official Hermes API check. Token is read only from the environment.
-OCTUPIE_HERMES_API_KEY=your-local-api-server-key npm run agent -- hermes-check --endpoint http://127.0.0.1:8642 --allow-network --json
+HERMES_API_KEY=your-local-api-server-key npm run agent -- hermes-check --endpoint http://127.0.0.1:8642 --allow-network --json
 
 # Request bounded, data-only orchestration guidance from Hermes
-OCTUPIE_HERMES_API_KEY=your-local-api-server-key npm run agent -- hermes-orchestrate --endpoint http://127.0.0.1:8642 --objective "review the opening" --stage draft-qa --allow-network --json
+HERMES_API_KEY=your-local-api-server-key npm run agent -- hermes-orchestrate --endpoint http://127.0.0.1:8642 --objective "review the opening" --stage draft-qa --allow-network --json
 ```
 
 ### Local source analysis
@@ -216,7 +216,7 @@ hook-variant planning hint, and a learning scope. One run currently selects one
 final plan. Every path is a safe relative path.
 
 Run records and learned rules live under `OVE_AGENT_HOME` (default
-`~/.octupie-video-editor`), outside this repository. Each run writes an audit
+`~/.video-editor`), outside this repository. Each run writes an audit
 directory (sanitized brief, text asset manifest, prompts or prompt hashes,
 redacted model replies, validated plans and critiques per iteration, final plan,
 provider metadata, active rule ids, and any failure detail). See
@@ -224,7 +224,7 @@ provider metadata, active rule ids, and any failure detail). See
 
 ## Presets
 
-- `octupie-product-launch` (16:9, product-led premium film)
+- `product-launch` (16:9, product-led premium film)
 - `linkedin-landscape-reel` (9:16 canvas, persistent hook, landscape media slot)
 - `yc-series-vertical` (9:16, strict continuity, speaker always visible)
 - `neutral-founder-reel` (9:16, restrained default; used by the demo)
@@ -271,4 +271,4 @@ Remotion reads footage and stills from this root. FFmpeg reads dialogue, music, 
 - `STYLE_LEARNING.md`: how learned editing rules become code, schema, and tests.
 - `WORKSPACE_AUDIT.md`: what was reused from internal workspaces and what was excluded.
 - `CONTRIBUTING.md`: test-driven workflow and conventions.
-- `skills/octupie-video-editor/SKILL.md`: the editorial grammar and pointers.
+- `skills/video-editor/SKILL.md`: the editorial grammar and pointers.
